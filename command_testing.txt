@@ -1,0 +1,239 @@
+python3 server.py --rounds=1000 --n_clients=2
+python3 client.py --client_id=0 --n_samples=50 --server=2.234.171.252:5223
+python3 client.py --client_id=1 --n_samples=50 --server=2.234.171.252:5223 --plot=True
+    --> 
+
+python3 server.py --rounds=5000 --n_clients=4
+python3 client.py --client_id=0 --n_train=13 --rounds=3 --server=2.234.171.252:5223
+python3 client.py --client_id=1 --n_train=10 --rounds=2 --server=2.234.171.252:5223
+python3 client.py --client_id=2 --n_train=10 --rounds=2 --server=2.234.171.252:5223
+python3 client.py --client_id=3 --n_train=20 --rounds=5 --server=2.234.171.252:5223 --plot=True
+    --> stopped at give 5000 rounds at accuracy = 0.0.9670000076293945 (accepting 2 clients out of 4 per fed_iter)
+
+python3 server.py --rounds=5000 --n_clients=4
+python3 client.py --client_id=0 --n_train=13 --server=2.234.171.252:5223
+python3 client.py --client_id=1 --n_train=10 --server=2.234.171.252:5223
+python3 client.py --client_id=2 --n_train=10 --server=2.234.171.252:5223
+python3 client.py --client_id=3 --n_train=20 --server=2.234.171.252:5223 --plot=True
+    --> final results - loss: 0.1043 - accuracy: 1.0000
+
+python3 server.py --rounds=5000 --n_clients=4
+python3 client.py --client_id=0 --n_train=13 --rounds=5 --server=2.234.171.252:5223
+python3 client.py --client_id=1 --n_train=10 --rounds=5 --server=2.234.171.252:5223
+python3 client.py --client_id=2 --n_train=10 --rounds=5 --server=2.234.171.252:5223
+python3 client.py --client_id=3 --n_train=20 --rounds=5 --server=2.234.171.252:5223 --plot=True
+    --> final result - loss: 0.0505 - accuracy: 0.9820
+
+python3 server.py --rounds=5000 --n_clients=4
+python3 client.py --client_id=0 --n_train=13 --rounds=3 --server=2.234.171.252:5223
+python3 client.py --client_id=1 --n_train=10 --rounds=2 --server=2.234.171.252:5223
+python3 client.py --client_id=2 --n_train=10 --rounds=2 --server=2.234.171.252:5223
+python3 client.py --client_id=3 --n_train=20 --rounds=5 --server=2.234.171.252:5223 --plot=True
+    --> final result - loss: 0.0937 - accuracy: 0.9670  
+
+## SIMULATIONS FOR REPORT: keep fix the total number of samples (840??)
+
+# FL_2clients_same
+python3 server.py --rounds=1000 --n_clients=2
+python3 client.py --client_id=x --n_train=420 --server=2.234.171.252:5223
+python3 simple_model.py --n_clients=2 --n_epochs=1000 --n_samples=840
+mv output/* ../RESULTS/FL_2clients_same/
+# FL_3clients_same
+python3 server.py --rounds=1000 --n_clients=3
+python3 client.py --client_id=x --n_train=280 --server=2.234.171.252:5223
+python3 simple_model.py --n_clients=3 --n_epochs=1000 --n_samples=840
+mv output/* ../RESULTS/FL_3clients_same/
+# FL_4clients_same
+python3 server.py --rounds=1000 --n_clients=4
+python3 client.py --client_id=x --n_train=210 --server=2.234.171.252:5223
+python3 simple_model.py --n_clients=4 --n_epochs=1000 --n_samples=840
+mv output/* ../RESULTS/FL_4clients_same/
+# FL_5clients_same
+python3 server.py --rounds=2000 --n_clients=5
+python3 client.py --client_id=x --n_train=168 --server=2.234.171.252:5223
+python3 simple_model.py --n_clients=5 --n_epochs=2000 --n_samples=840
+mv output/* ../RESULTS/FL_5clients_same/
+# FL_6clients_same
+python3 server.py --rounds=1000 --n_clients=6
+python3 client.py --client_id=x --n_train=140 --server=2.234.171.252:5223
+python3 simple_model.py --n_clients=6 --n_epochs=1000 --n_samples=840
+mv output/* ../RESULTS/FL_6clients_same/
+# FL_7clients_same
+python3 server.py --rounds=1000 --n_clients=7
+python3 client.py --client_id=x --n_train=120 --server=2.234.171.252:5223
+python3 simple_model.py --n_clients=7 --n_epochs=1000 --n_samples=840
+mv output/* ../RESULTS/FL_7clients_same/
+# FL_8clients_same
+python3 server.py --rounds=1000 --n_clients=8
+python3 client.py --client_id=0 --n_train=105 --server=2.234.171.252:5223
+python3 simple_model.py --n_clients=8 --n_epochs=1000 --n_samples=840
+mv output/* ../RESULTS/FL_8clients_same/
+
+# FL_2clients_tr
+python3 server.py --rounds=1000 --n_clients=2
+python3 client.py --client_id=x --n_train=420 --server=2.234.171.252:5223 --is_traslated=true
+python3 simple_model.py --n_clients=2 --n_epochs=1000 --n_samples=840 --is_traslated=true
+mv output/* ../RESULTS/FL_2clients_tr/
+# FL_3clients_tr
+python3 server.py --rounds=1000 --n_clients=3
+python3 client.py --client_id=x --n_train=280 --server=2.234.171.252:5223 --is_traslated=true
+python3 simple_model.py --n_clients=3 --n_epochs=1000 --n_samples=840 --is_traslated=true
+mv output/* ../RESULTS/FL_3clients_tr/
+# FL_4clients_tr
+python3 server.py --rounds=1000 --n_clients=4
+python3 client.py --client_id=x --n_train=210 --server=2.234.171.252:5223 --is_traslated=true
+python3 simple_model.py --n_clients=4 --n_epochs=1000 --n_samples=840 --is_traslated=true
+mv output/* ../RESULTS/FL_4clients_tr/
+# FL_5clients_tr
+python3 server.py --rounds=1000 --n_clients=5
+python3 client.py --client_id=x --n_train=168 --server=2.234.171.252:5223 --is_traslated=true
+python3 simple_model.py --n_clients=5 --n_epochs=1000 --n_samples=840 --is_traslated=true
+mv output/* ../RESULTS/FL_5clients_tr/
+# FL_6clients_tr
+python3 server.py --rounds=1000 --n_clients=6
+python3 client.py --client_id=x --n_train=140 --server=2.234.171.252:5223 --is_traslated=true
+python3 simple_model.py --n_clients=6 --n_epochs=1000 --n_samples=840 --is_traslated=true
+mv output/* ../RESULTS/FL_6clients_tr/
+# FL_7clients_tr
+python3 server.py --rounds=1000 --n_clients=7
+python3 client.py --client_id=x --n_train=120 --server=2.234.171.252:5223 --is_traslated=true
+python3 simple_model.py --n_clients=7 --n_epochs=1000 --n_samples=840 --is_traslated=true
+mv output/* ../RESULTS/FL_7clients_tr/
+# FL_8clients_tr
+python3 server.py --rounds=1000 --n_clients=8
+python3 client.py --n_train=105 --server=2.234.171.252:5223 --is_traslated=true --rounds=5 --client_id=x 
+python3 simple_model.py --n_clients=8 --n_epochs=1000 --n_samples=840 --is_traslated=true
+mv output/* ../RESULTS/FL_8clients_tr/
+
+# FL_2clients_rot
+python3 server.py --rounds=1000 --n_clients=2
+python3 client.py --client_id=x --n_train=420 --server=2.234.171.252:5223 --is_rotated=true
+python3 simple_model.py --n_clients=2 --n_epochs=1000 --n_samples=840 --is_rotated=true
+mv output/* ../RESULTS/FL_2clients_rot/
+# FL_3clients_rot
+python3 server.py --rounds=1000 --n_clients=3
+python3 client.py --client_id=x --n_train=280 --server=2.234.171.252:5223 --is_rotated=true
+python3 simple_model.py --n_clients=3 --n_epochs=1000 --n_samples=840 --is_rotated=true
+mv output/* ../RESULTS/FL_3clients_rot/
+# FL_4clients_rot
+python3 server.py --rounds=1000 --n_clients=4
+python3 client.py --client_id=x --n_train=210 --server=2.234.171.252:5223 --is_rotated=true
+python3 simple_model.py --n_clients=4 --n_epochs=1000 --n_samples=840 --is_rotated=true
+mv output/* ../RESULTS/FL_4clients_rot/
+# FL_5clients_rot
+python3 server.py --rounds=1000 --n_clients=5
+python3 client.py --client_id=x --n_train=168 --server=2.234.171.252:5223 --is_rotated=true
+python3 simple_model.py --n_clients=5 --n_epochs=1000 --n_samples=840 --is_rotated=true
+mv output/* ../RESULTS/FL_5clients_rot/
+# FL_6clients_rot
+python3 server.py --rounds=1000 --n_clients=6
+python3 client.py --client_id=x --n_train=140 --server=2.234.171.252:5223 --is_rotated=true
+python3 simple_model.py --n_clients=6 --n_epochs=1000 --n_samples=840 --is_rotated=true
+mv output/* ../RESULTS/FL_6clients_rot/
+# FL_7clients_rot
+python3 server.py --rounds=1000 --n_clients=7
+python3 client.py --client_id=x --n_train=120 --server=2.234.171.252:5223 --is_rotated=true
+python3 simple_model.py --n_clients=7 --n_epochs=1000 --n_samples=840 --is_rotated=true
+mv output/* ../RESULTS/FL_7clients_rot/
+# FL_8clients_rot
+python3 server.py --rounds=1000 --n_clients=8
+python3 client.py --client_id=0 --n_train=105 --server=2.234.171.252:5223 --is_rotated=true
+python3 simple_model.py --n_clients=8 --n_epochs=1000 --n_samples=840 --is_rotated=true
+mv output/* ../RESULTS/FL_8clients_rot/
+
+
+# FL_2-3-4-5-6-7-8clients_same
+python3 simple_model.py --n_clients=8 --n_epochs=1000 --n_samples=840
+mv output/* ../RESULTS/single_model_same
+
+python3 server.py --rounds=1000 --n_clients=2-3-4-5-6-7-8
+python3 client.py --n_samples=840 --server=2.234.171.252:5223 --client_id=x --n_clients=x
+mv output/* ../RESULTS/FL_2-3-4-5-6-7-8clients_same
+
+# FL_2-3-4-5-6-7-8clients_tr
+python3 simple_model.py --n_clients=8 --n_epochs=1000 --n_samples=840 --is_traslated=true
+mv output/* ../RESULTS/single_model_tr
+
+python3 server.py --rounds=1000 --n_clients=2-3-4-5-6-7-8
+python3 client.py --n_samples=840 --server=2.234.171.252:5223 --is_traslated=true --client_id=x --n_clients=x
+mv output/* ../RESULTS/FL_2-3-4-5-6-7-8clients_tr
+
+# FL_2-3-4-5-6-7-8clients_rot
+python3 simple_model.py --n_clients=8 --n_epochs=1000 --n_samples=840 --is_rotated=true
+mv output/* ../RESULTS/single_model_rot
+
+python3 server.py --rounds=1000 --n_clients=2-3-4-5-6-7-8
+python3 client.py --n_samples=840 --server=2.234.171.252:5223 --is_rotated=true --client_id=x --n_clients=x
+mv output/* ../RESULTS/FL_2-3-4-5-6-7-8clients_rot
+
+
+# FL_2-3-4-5-6-7-8clients_plus_same 
+python3 server.py --rounds=1000 --n_clients=2-3-4-5-6-7-8
+python3 client.py --n_samples=840 --server=2.234.171.252:5223 --client_id=x --n_clients=x --rounds=x
+mv output/* ../RESULTS/FL_2-3-4-5-6-7-8clients_plus_same
+
+
+# FL_8clients_mix1_same 
+python3 server.py --rounds=1000 --n_clients=8
+python3 client.py --n_samples=840 --server=2.234.171.252:5223 --n_clients=8 --rounds=4 --client_id=x --is_traslated=true
+mv output/* ../RESULTS/FL_2-3-4-5-6-7-8clients_plus_same
+
+# FL_8clients_mix2_same 
+python3 server.py --rounds=1000 --n_clients=8
+python3 client.py --n_samples=840 --server=2.234.171.252:5223 --n_clients=8 --rounds=4 --client_id=x --is_rotated=true
+mv output/* ../RESULTS/FL_2-3-4-5-6-7-8clients_plus_same
+
+
+
+# FL_2clients_tr
+python3 server.py --rounds=1000 --n_clients=2
+python3 client.py --client_id=0 --n_train=160 --server=2.234.171.252:5223 --is_traslated=true
+python3 client.py --client_id=1 --n_train=160 --server=2.234.171.252:5223 --is_traslated=true
+python3 simple_model.py --n_clients=2 --n_epochs=2000 --n_samples=840 --is_traslated=true
+mv output/* ../RESULTS/FL_2clients_tr
+# FL_4clients_t
+python3 server.py --rounds=4000 --n_clients=4
+python3 client.py --client_id=0 --n_train=80 --server=2.234.171.252:5223 --is_traslated=tru
+python3 client.py --client_id=1 --n_train=80 --server=2.234.171.252:5223 --is_traslated=tru
+python3 client.py --client_id=2 --n_train=80 --server=2.234.171.252:5223 --is_traslated=tru
+python3 client.py --client_id=3 --n_train=80 --server=2.234.171.252:5223 --is_traslated=true 
+python3 simple_model.py --n_clients=4 --n_epochs=4000 --n_samples=320 --is_traslated=true
+mv output/* ../RESULTS/FL_4clients_t
+# FL_8clients_t
+python3 server.py --rounds=4000 --n_clients=8
+python3 client.py --client_id=0 --n_train=40 --server=2.234.171.252:5223 --is_traslated=tru
+python3 client.py --client_id=1 --n_train=40 --server=2.234.171.252:5223 --is_traslated=tru
+python3 client.py --client_id=2 --n_train=40 --server=2.234.171.252:5223 --is_traslated=tru
+python3 client.py --client_id=3 --n_train=40 --server=2.234.171.252:5223 --is_traslated=tru
+python3 client.py --client_id=4 --n_train=40 --server=2.234.171.252:5223 --is_traslated=tru
+python3 client.py --client_id=5 --n_train=40 --server=2.234.171.252:5223 --is_traslated=tru
+python3 client.py --client_id=6 --n_train=40 --server=2.234.171.252:5223 --is_traslated=tru
+python3 client.py --client_id=7 --n_train=40 --server=2.234.171.252:5223 --is_traslated=true 
+python3 simple_model.py --n_clients=8 --n_epochs=4000 --n_samples=320 --is_traslated=true
+mv output/* ../RESULTS/FL_8clients_t
+# FL_2clients_rot
+python3 server.py --rounds=2000 --n_clients=2
+python3 client.py --client_id=0 --n_train=160 --server=2.234.171.252:5223 --is_rotated=tru
+python3 client.py --client_id=1 --n_train=160 --server=2.234.171.252:5223 --is_rotated=true
+python3 simple_model.py --n_clients=2 --n_epochs=2000 --n_samples=320 --is_rotated=true
+mv output/* ../RESULTS/FL_2clients_rot
+# FL_4clients_rot
+python3 server.py --rounds=4000 --n_clients=4
+python3 client.py --client_id=0 --n_train=80 --server=2.234.171.252:5223 --is_rotated=tru
+python3 client.py --client_id=1 --n_train=80 --server=2.234.171.252:5223 --is_rotated=tru
+python3 client.py --client_id=2 --n_train=80 --server=2.234.171.252:5223 --is_rotated=tru
+python3 client.py --client_id=3 --n_train=80 --server=2.234.171.252:5223 --is_rotated=true
+python3 simple_model.py --n_clients=4 --n_epochs=4000 --n_samples=320 --is_rotated=true
+mv output/* ../RESULTS/FL_4clients_rot
+# FL_8clients_rot
+python3 server.py --rounds=4000 --n_clients=8
+python3 client.py --client_id=0 --n_train=40 --server=2.234.171.252:5223 --is_rotated=tru
+python3 client.py --client_id=1 --n_train=40 --server=2.234.171.252:5223 --is_rotated=tru
+python3 client.py --client_id=2 --n_train=40 --server=2.234.171.252:5223 --is_rotated=tru
+python3 client.py --client_id=3 --n_train=40 --server=2.234.171.252:5223 --is_rotated=tru
+python3 client.py --client_id=4 --n_train=40 --server=2.234.171.252:5223 --is_rotated=tru
+python3 client.py --client_id=5 --n_train=40 --server=2.234.171.252:5223 --is_rotated=tru
+python3 client.py --client_id=6 --n_train=40 --server=2.234.171.252:5223 --is_rotated=tru
+python3 client.py --client_id=7 --n_train=40 --server=2.234.171.252:5223 --is_rotated=true
+python3 simple_model.py --n_clients=8 --n_epochs=4000 --n_samples=320 --is_rotated=true
+mv output/* ../RESULTS/FL_8clients_rot
